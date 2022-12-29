@@ -25,21 +25,13 @@ class GameLauncher {
 
 public class GameWindow extends JFrame {
 
-    // MINIMUM RECOMMENDED SUPPORTED SIZE IS 1280x960 !
-    // Please do not use smaller dimensions as the game UI elements may not fit properly
     static final int SCREEN_WIDTH = 1280;
     static final int SCREEN_HEIGHT = 960;
-    //static final String title = "Tank Game by Brian Lai | Press F1 to view controls";
 
     static GameWindow gameWindow;
 
-    /**
-     * Constructs a game window with the necessary configurations.
-     * @param game Game panel that will be contained inside the game window
-     */
     GameWindow(JPanel game) {
-        //this.setTitle(title);
-
+        
         try {
             System.out.println(System.getProperty("user.dir"));
             Image icon = ImageIO.read(this.getClass().getResource("/resources/icon.png"));
