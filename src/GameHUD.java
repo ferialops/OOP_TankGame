@@ -16,10 +16,6 @@ public class GameHUD {
     private int infoWidth;
     private BufferedImage playerInfo[];
 
-    /**
-     * Constructs the game HUD with the minimap being a third of the window size.
-     * @param world The game world drawn to the screen
-     */
     public GameHUD(BufferedImage world) {
         this.players = new Player[2];
 
@@ -55,19 +51,10 @@ public class GameHUD {
         return this.playerInfo[1];
     }
 
-    /**
-     * Called by main.java.GamePanel to draw the minimap on the screen.
-     * @return The view of the minimap of the game world
-     */
     public BufferedImage getMinimap() {
         return minimap;
     }
-
-    /**
-     * Continuously redraw the view of the minimap to be based on the game world.
-     * Continuously redraw player information such as stats and health bar.
-     * @param world The game world drawn to the screen
-     */
+    
     public void redraw(BufferedImage world) {
         Graphics[] playerGraphics = { this.playerInfo[0].createGraphics(), this.playerInfo[1].createGraphics() };
         Graphics map = this.minimap.createGraphics();
