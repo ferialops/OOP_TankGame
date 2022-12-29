@@ -40,17 +40,11 @@ public class GamePanel extends JPanel implements Runnable {
     private Camera camera1;
     private Camera camera2;
 
-    /**
-     * Constructor used to initialize the JPanel of the game for the JFrame.
-     */
     public GamePanel() {
         this.setFocusable(true);
         this.requestFocus();
     }
 
-    /**
-     * Initializer that sets the game into a running state and enables the update method.
-     */
     public void init() {
         this.setControls();
         ResourceCollection.init();
@@ -65,13 +59,6 @@ public class GamePanel extends JPanel implements Runnable {
         this.addKeyListener(this.gameController);
     }
 
-    /**
-     * Loads data from a file to generate a map based on tiles.
-     * "-1" = empty space
-     * "S" = SoftWall
-     * "H" = HardWall
-     * @param mapFile Name of the file to generate map from
-     */
     public void loadMap(String mapFile) {
         this.mapFile = mapFile;
         // Loading main.resources: sprites, tiles, background
@@ -188,12 +175,6 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
     }
-
-    /**
-     * Called in loadMap to load tile map for hard wall sprites.
-     * The correct sprite is chosen for hard wall based on adjacent hard walls.
-     * @param tiles Double array of sliced tile map
-     */
     private void loadTiles(BufferedImage[][] tiles) {
         this.tileMap = new HashMap<>();
         /*
@@ -229,9 +210,6 @@ public class GamePanel extends JPanel implements Runnable {
         this.tileMap.put(0b1111, tiles[0][1]);  // N S W E
     }
 
-    /**
-     * Initialize key bindings for player 1 and player 2.
-     */
     private void setControls() {
         this.controls1 = new HashMap<>();
         this.controls2 = new HashMap<>();
@@ -260,16 +238,10 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
-    /**
-     * When ESC is pressed, close the game
-     */
     public void exit() {
         System.exit(0);
     }
-
-    /**
-     * When F5 is pressed, reset game object collection, collect garbage, reinitialize game panel, reload map
-     */
+    
     public void resetGame() {
         GameObjectCollection.init();
         System.gc();
@@ -277,9 +249,6 @@ public class GamePanel extends JPanel implements Runnable {
         this.loadMap(this.mapFile);
     }
 
-    /**
-     * Game starts running and keeps running.
-     */
     @Override
     public void run() {
         long timer = System.currentTimeMillis();
@@ -315,10 +284,6 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
-    /**
-     * Updates the state of the game by calling the update method from all game objects
-     * in the collection, the cameras, the game HUD, and repaint.
-     */
     private void update() {
         try {
             for (int i = 0; i < GameObjectCollection.numGameObjects(); ) {
@@ -349,10 +314,6 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
-    /**
-     * Constantly redraws the screen according to the game state.
-     * @param g What is shown on the screen
-     */
     @Override
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
@@ -402,9 +363,6 @@ public class GamePanel extends JPanel implements Runnable {
 
 }
 
-/**
- * Used to control the game
- */
 class GameController implements KeyListener {
 
     private GamePanel gamePanel;
@@ -417,11 +375,7 @@ class GameController implements KeyListener {
     public void keyTyped(KeyEvent e) {
 
     }
-
-    /**
-     * Key events for general game operations such as exit
-     * @param e Keyboard key pressed
-     */
+    
     @Override
     public void keyPressed(KeyEvent e) {
         // Close game
