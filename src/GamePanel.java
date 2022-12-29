@@ -402,14 +402,6 @@ class GameController implements KeyListener {
 
             JTable controlsTable = new JTable(controls, columnHeaders);
             JTableHeader tableHeader = controlsTable.getTableHeader();
-
-            // Wrap JTable inside JPanel to display
-            /*JPanel panel = new JPanel();
-            panel.setLayout(new BorderLayout());
-            panel.add(tableHeader, BorderLayout.NORTH);
-            panel.add(controlsTable, BorderLayout.CENTER);*/
-
-            //JOptionPane.showMessageDialog(this.gamePanel, panel, "Controls", JOptionPane.PLAIN_MESSAGE);
         }
 
         // Reset game
